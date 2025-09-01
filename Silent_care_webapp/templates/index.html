@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SilentCare - Your Communication Companion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">SilentCare</h1>
+            <p class="hero-subtitle">Bridging Communication with Voice, Text, and Sign Language</p>
+            <button class="chat-btn" onclick="toggleChat()">Chat Now</button>
+        </div>
+        <div class="hero-bg"></div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Why SilentCare?</h2>
+        <div class="feature-cards">
+            <div class="card">
+                <div class="card-icon">🎙️</div>
+                <h3>Voice-to-Text</h3>
+                <p>Convert spoken words to text instantly for seamless communication.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">✋</div>
+                <h3>Sign Language Support</h3>
+                <p>Interact using sign language with our animated avatar (coming soon).</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📝</div>
+                <h3>Text Chat</h3>
+                <p>Type your thoughts and get empathetic, real-time responses.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Popup -->
+    <div class="chat-popup" id="chatPopup">
+        <div class="chat-header">
+            <h3>SilentCare Chat</h3>
+            <button class="close-btn" onclick="toggleChat()">✖</button>
+        </div>
+        <div class="chatbox" id="chatbox">
+            <div class="welcome-message">
+                <p>Hello! How can I assist you today?</p>
+            </div>
+        </div>
+        <div class="input-container" id="chatInput">
+            <input type="text" id="input" placeholder="Type your message...">
+            <button class="send-btn" onclick="sendMessage()">Send</button>
+            <button class="voice-btn" onclick="startVoice()">🎤</button>
+            <a href="http://127.0.0.1:2000/" target="_blank">
+                <button class="sign-btn">✋</button>
+            </a>
+            
+        </div>
+        <div class="sign-container" id="signInput" style="display: none;">
+            <video id="videoFeed" autoplay class="sign-video"></video>
+            <canvas id="skeleton" style="display: none;"></canvas> <!-- Added for frame capture -->
+            <div class="sign-buttons">
+                <button class="capture-btn" onclick="captureSign()">Capture</button>
+                <button class="back-btn" onclick="showChatInput()">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

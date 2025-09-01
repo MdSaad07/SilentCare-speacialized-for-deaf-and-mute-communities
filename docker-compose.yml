@@ -1,0 +1,37 @@
+services:
+  silent_care_app:
+    build: 
+      context: ./silent_care_app
+      dockerfile: Dockerfile
+    volumes:
+      - ./silent_care_app:/app
+      # Mount model files if they exist locally
+      - ./models:/app/models:ro  # Add this if you have a models directory
+    environment:
+      - DISPLAY=:99
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    # Override CMD based on your file structure:
+    command: python server.py  # If server.py is in root
+    # command: python backend/server.py  # If server.py is in backend folder
+    
+  sign_language_app:
+    build:
+      context: ./sign_language_app
+      dockerfile: Dockerfile
+    volumes:
+      - ./sign_language_app:/app
+      # Mount the model file - Choose one of these options:
+      # Option 1: Model is in the sign_language_app directory
+      - ./sign_language_app/generated_model.h5:/app/generated_model.h5:ro
+      # Option 2: Model is in a shared models directory
+      # - ./models/generated_model.h5:/app/generated_model.h5:ro
+      # Option 3: Model is in your home directory
+      # - ~/path/to/generated_model.h5:/app/generated_model.h5:ro
+    environment:
+      - TF_ENABLE_ONEDNN_OPTS=0  # Reduces TensorFlow warnings
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    # Override CMD based on your file structure:
+    command: python server.py  # If server.py is in root
+    # command: python backend/server.py  # If server.py is in backend folder

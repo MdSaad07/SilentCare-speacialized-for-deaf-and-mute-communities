@@ -1,0 +1,371 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 4em;
+    font-weight: 700;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: slideIn 1s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.5em;
+    margin: 20px 0;
+    opacity: 0.9;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.chat-btn {
+    padding: 15px 40px;
+    font-size: 1.2em;
+    background: #ffd700;
+    color: #1e3c72;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.chat-btn:hover {
+    background: #ffeb3b;
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+    animation: pulse 10s infinite;
+    z-index: 1;
+}
+
+/* Features Section */
+.features {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    animation: fadeIn 1s ease-out;
+}
+
+.feature-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    width: 300px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    animation: cardFadeIn 1s ease-out;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1em;
+    opacity: 0.8;
+}
+
+/* Chat Popup */
+.chat-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 90%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    display: none;
+}
+
+.chat-popup.active {
+    transform: translate(-50%, -50%) scale(1);
+    display: block;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #2a5298;
+    color: #fff;
+    border-radius: 20px 20px 0 0;
+}
+
+.chat-header h3 {
+    font-size: 1.2em;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.chatbox {
+    height: 400px;
+    padding: 20px;
+    overflow-y: auto;
+    color: #333;
+}
+
+.chatbox .message {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+    animation: messageFadeIn 0.3s ease-in;
+}
+
+.chatbox .user-message {
+    background: #2a5298;
+    color: #fff;
+    margin-left: auto;
+    text-align: right;
+}
+
+.chatbox .bot-message {
+    background: #e0e0e0;
+    color: #333;
+    margin-right: auto;
+}
+
+.welcome-message {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.input-container {
+    display: flex;
+    padding: 20px;
+    gap: 10px;
+    border-top: 1px solid #ddd;
+}
+
+#input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    outline: none;
+    background: #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+#input:focus {
+    background: #fff;
+    box-shadow: 0 0 10px rgba(42, 82, 152, 0.5);
+}
+
+.send-btn, .voice-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    cursor: pointer;
+    background: #2a5298;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.send-btn:hover, .voice-btn:hover {
+    background: #1e3c72;
+    transform: scale(1.05);
+}
+
+.voice-btn {
+    background: #ffd700;
+    color: #333;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes cardFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes messageFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scrollbar Styling */
+.chatbox::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chatbox::-webkit-scrollbar-thumb {
+    background: #2a5298;
+    border-radius: 10px;
+}
+
+.chatbox::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.speak-btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background: #ffd700;
+    color: #333;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.speak-btn:hover {
+    background: #ffeb3b;
+    transform: scale(1.1);
+}
+
+.bot-message {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Sign Language Button */
+.sign-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    cursor: pointer;
+    background: #6b46c1; /* Purple to contrast with #ffd700 (voice) and #2a5298 (send) */
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.sign-btn:hover {
+    background: #553c9a;
+    transform: scale(1.05);
+}
+
+/* Sign Language Input Container */
+.sign-container {
+    padding: 20px;
+    border-top: 1px solid #ddd; /* Matches input-container border */
+}
+
+.sign-video {
+    width: 100%;
+    height: 200px; /* Fits within chatbox height (400px total) */
+    background: #000;
+    border-radius: 10px; /* Matches message bubbles */
+    margin-bottom: 10px;
+}
+
+.sign-buttons {
+    display: flex;
+    gap: 10px; /* Matches input-container gap */
+    justify-content: space-between;
+}
+
+.capture-btn, .back-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px; /* Matches send-btn, voice-btn */
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.capture-btn {
+    background: #2a5298; /* Matches send-btn */
+    color: #fff;
+}
+
+.capture-btn:hover {
+    background: #1e3c72; /* Matches send-btn hover */
+    transform: scale(1.05);
+}
+
+.back-btn {
+    background: #e53e3e; /* Red for cancel action */
+    color: #fff;
+}
+
+.back-btn:hover {
+    background: #c53030;
+    transform: scale(1.05);
+}

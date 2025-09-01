@@ -1,0 +1,10 @@
+flask
+numpy
+pandas
+tensorflow
+textblob
+speechrecognition
+requests
+scikit-learn
+flask_socketio
+opencv-python

@@ -1,0 +1,8 @@
+opencv-python>=4.5.5.64
+numpy>=1.21.0
+mediapipe>=0.8.9
+keras>=2.6.0
+tensorflow>=2.6.0
+flask
+flask_socketio
+# and any other modules you use like keras, nltk, etc.

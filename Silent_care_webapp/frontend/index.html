@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Translator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>SilentCare: Sign Language Translator</h1>
+        <p>Convert hand gestures to text and speech in real-time</p>
+    </header>
+    <div class="container">
+        <div class="video-section">
+            <div class="video-wrapper">
+                <video id="video" autoplay></video>
+                <canvas id="skeleton" width="400" height="400"></canvas>
+            </div>
+        </div>
+        <div class="output-section">
+            <div class="output-box">
+                <h2>Translation</h2>
+                <p>Current Gesture: <span id="current-char" class="highlight"></span></p>
+                <p>Sentence: <span id="sentence" class="sentence-box"></span></p>
+            </div>
+            <div class="suggestions">
+                <h3>Suggestions</h3>
+                <button id="sugg1" class="suggestion-btn"></button>
+                <button id="sugg2" class="suggestion-btn"></button>
+                <button id="sugg3" class="suggestion-btn"></button>
+                <button id="sugg4" class="suggestion-btn"></button>
+            </div>
+            <div class="controls">
+                <button id="speak-btn" class="action-btn">Speak</button>
+                <button id="clear-btn" class="action-btn clear">Clear</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 SilentCare</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
